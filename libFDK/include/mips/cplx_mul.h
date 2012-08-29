@@ -117,7 +117,7 @@ inline void cplxMultDiv2( FIXP_DBL *c_Re,
        : "lo");
 */
    *c_Re = result;
-   result = (((long long)a_Re * b_Im) - ((long long) a_Im * b_Re)) >> 32;
+   result = (((long long)a_Re * b_Im) + ((long long) a_Im * b_Re)) >> 32;
 /*
    __asm__ ("mult %[a_Re], %[b_Im];\n"
             "madd %[a_Im], %[b_Re];\n"
@@ -147,7 +147,7 @@ inline void cplxMult( FIXP_DBL *c_Re,
         : "lo");
 */
    *c_Re = result<<1;
-   result = (((long long)a_Re * b_Im) - ((long long) a_Im * b_Re)) >> 32;
+   result = (((long long)a_Re * b_Im) + ((long long) a_Im * b_Re)) >> 32;
 /*
    __asm__ ("mult %[a_Re], %[b_Im];\n"
             "madd %[a_Im], %[b_Re];\n"
